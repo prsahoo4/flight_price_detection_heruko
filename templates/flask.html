@@ -1,0 +1,237 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEMAND PREDICTION</title>
+
+
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    <!-- css -->
+    <link rel="stylesheet" href="static/css/styles.css">
+
+
+</head>
+
+<body>
+
+
+<style>
+body {
+  background-image: url("https://images.unsplash.com/photo-1542450256-2dd6d209ff85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80");
+  background-position: 200%;
+  background-size: cover;
+}
+</style>
+
+    <!-- As a heading -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <h1>DEMAND PREDICTION</h1>
+<!--                <a class="navbar-brand">PREDICT FLIGHT PRICE</a>-->
+            </div>
+        </div>
+    </nav>
+
+    <br><br><br>
+
+
+    <div class="container">
+
+
+
+      <form action="\predict" method="post">
+
+
+          <div class="row">
+              <div class="col-sm-6">
+                  <div class="card">
+                      <div class="card-body">
+                          <!-- flight date -->
+                          <h5 class="card-title">FLIGHT DATE</h5>
+                          <input type="date" name="Flight Date" placeholder="date of flight" required="required" />
+                      </div>
+                  </div>
+              </div>
+              <div class="col-sm-6">
+                  <div class="card">
+                      <div class="card-body">
+                          <h5 class="card-title">BOOKING DATE</h5>
+                          <!-- booking date -->
+                          <input type="date" name="Booking date" placeholder="date of booking" required="required"/> 
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <br>
+          <br>
+          <br>
+           <div class="row">
+              <div class="col-sm-6">
+                  <div class="card">
+                      <div class="card-body">
+                          <h5 class="card-title">FLIGHT NUMBER</h5>
+                          <!-- flight number -->
+                          <select name="Flight Number" placeholder="flights number" required="required" >
+                            <option value="FL133">FL133</option>
+                            <option value="FL134">FL134</option>
+                            <option value="FL141">FL141</option>
+                          </select>
+                      </div>
+                  </div>
+              </div>
+              <br>
+              <br>
+              <br>
+              <div class="col-sm-6">
+                  <div class="card">
+                      <div class="card-body">
+                          <h5 class="card-title">ORIGIN</h5>
+                          <!-- origin -->
+                          <select name="Origin" placeholder="board point" required="required" >
+                            <option value="ZSF">ZSF</option>
+                            <option value="OJK">OJK</option>
+                          </select>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <br>
+          <br>
+          <br>
+          <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">DESTINATION</h5>
+                        <!-- destination -->
+                        <select name="Destination" placeholder="off point" required="required" >
+                          <option value="ZSF">ZSF</option>
+                          <option value="OJK">OJK</option>
+                          <option value="KUF">KUF</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">FARE LEVEL CODE</h5>
+                        <!-- fare level code -->
+                        <select name="Fare Level Code" placeholder="fare code" required="required" >
+                          <option value="WO">WO</option>
+                          <option value="BD">BD</option>
+                          <option value="RY">RY</option>
+                          <option value="CD">CD</option>
+                          <option value="IT">IT</option>
+                          <option value="Others">Others</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <br>
+          <br>
+          <br>
+
+
+          <!-- Submit -->
+          <input type="submit" value="Submit" class="btn btn-secondary">
+      </form>
+
+
+      <h3>{{ prediction_text }}</h3>
+
+      <br>
+      <p>©2020 Total Data Science</p>
+
+    </div>
+	
+
+     <!-- Main Input For Receiving Query to our ML -->
+
+     <!-- <div class="login">
+      <h2>PREDICT AIRLINE DEMAND</h2> -->
+    
+         <!-- Main Input For Receiving Query to our ML -->
+        <!-- <form action="{{ url_for('predict')}}"method="post">
+          <div>
+            <label>FLIGHT DATE: </label>
+            <input type="date" name="Flight Date" placeholder="date of flight" required="required" />
+          </div>
+          <br>
+          <div>
+            <label>BOOKING DATE: </label>
+            <input type="date" name="Booking date" placeholder="date of booking" required="required"/> 
+          </div>
+          <br>
+          <div>
+            <label>FLIGHT NUMBER: </label>
+            <select name="Flight Number" placeholder="flights number" required="required" >
+              <option value="FL133">FL133</option>
+              <option value="FL134">FL134</option>
+              <option value="FL141">FL141</option>
+            </select>
+          </div>
+          <br>
+          <div>
+            <label>ORIGIN: </label>
+            <select name="Origin" placeholder="board point" required="required" >
+              <option value="ZSF">ZSF</option>
+              <option value="OJK">OJK</option>
+            </select>
+          </div>
+          <br>
+          <div>
+            <label>DESTINATION: </label>
+            <select name="Destination" placeholder="off point" required="required" >
+              <option value="ZSF">ZSF</option>
+              <option value="OJK">OJK</option>
+              <option value="KUF">KUF</option>
+            </select>
+          </div>
+          <br>
+          <div>
+            <label>FARE LEVEL CODE: </label>
+            <select name="Fare Level Code" placeholder="fare code" required="required" >
+              <option value="WO">WO</option>
+              <option value="BD">BD</option>
+              <option value="RY">RY</option>
+              <option value="CD">CD</option>
+              <option value="IT">IT</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+          <br>
+          <div>
+            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+          </div>
+        </form>
+    
+       <br>
+       <br>
+       {{ prediction_text }}
+    
+     </div> -->
+
+     <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+</body>
+</html>
